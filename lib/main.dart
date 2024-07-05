@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:whispr/pages/intro_page.dart';
 
@@ -56,8 +54,9 @@ class MyApp extends StatelessWidget {
 
           // Large title theme
           titleLarge: TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.bold,
+            fontSize: 55,
+            fontFamily: 'Pacifico',
+            color: Color(0xfffffefe),
           ),
         ),
 
