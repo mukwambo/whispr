@@ -20,7 +20,8 @@ class IntroPage extends StatelessWidget {
                 height: 40,
               ),
               const Text(
-                'Unburden anonymously,\nboost your mental health.',
+                'Unburden anonymously, boost\n your mental health.',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Color(0xfffffefe),
                   fontSize: 18,
@@ -37,7 +38,10 @@ class IntroPage extends StatelessWidget {
                     foregroundColor: const Color(0xffff4165),
                     backgroundColor: const Color(0xfffffefe),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    // Navigate to the signInPage when the button is clicked
+                    Navigator.pushNamed(context, '/signInPage');
+                  },
                   child: const Text(
                     'Lets Get Started',
                     style: TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:whispr/pages/intro_page.dart';
+import 'package:whispr/pages/signin_page.dart';
 
 void main() {
   runApp(
@@ -43,7 +44,6 @@ class MyApp extends StatelessWidget {
           // Small title theme
           titleSmall: TextStyle(
             fontSize: 16,
-            fontWeight: FontWeight.bold,
           ),
 
           // Medium title theme
@@ -77,6 +77,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const IntroPage(),
+      routes: {
+        // Simplified way for handling navigation between screens
+        '/signInPage': (context) => const SignInPage(),
+      },
     );
   }
 }
