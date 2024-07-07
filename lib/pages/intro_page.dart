@@ -9,31 +9,30 @@ class IntroPage extends StatelessWidget {
       backgroundColor: const Color(0xffff4165),
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Whispr',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              const Text(
-                'Unburden anonymously, boost\n your mental health.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xfffffefe),
-                  fontSize: 18,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Whispr',
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10.0, horizontal: 60),
-                child: TextButton(
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                  'Unburden anonymously, boost\n your mental health.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Color(0xfffffefe),
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
+                TextButton(
                   style: TextButton.styleFrom(
                     foregroundColor: const Color(0xffff4165),
                     backgroundColor: const Color(0xfffffefe),
@@ -48,9 +47,9 @@ class IntroPage extends StatelessWidget {
                       color: Color(0xffff4165),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

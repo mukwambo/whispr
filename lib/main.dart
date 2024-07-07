@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whispr/pages/create_account.dart';
 import 'package:whispr/pages/intro_page.dart';
 import 'package:whispr/pages/signin_page.dart';
 
@@ -48,8 +49,9 @@ class MyApp extends StatelessWidget {
 
           // Medium title theme
           titleMedium: TextStyle(
-            fontSize: 25,
+            fontSize: 35,
             fontWeight: FontWeight.bold,
+            color: Color(0xffff4165),
           ),
 
           // Large title theme
@@ -57,6 +59,11 @@ class MyApp extends StatelessWidget {
             fontSize: 55,
             fontFamily: 'Pacifico',
             color: Color(0xfffffefe),
+          ),
+          labelSmall: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+            color: Color(0xffff4165),
           ),
         ),
 
@@ -75,11 +82,26 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        // Text field theme
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: Theme.of(context).textTheme.titleSmall,
+          prefixIconColor: const Color(0xffff4165),
+          suffixIconColor: const Color(0xffff4165),
+          filled: true,
+          fillColor: const Color(0xfffffefe),
+          border: const OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(
+              Radius.circular(12.0),
+            ),
+          ),
+        ),
       ),
       home: const IntroPage(),
       routes: {
         // Simplified way for handling navigation between screens
         '/signInPage': (context) => const SignInPage(),
+        '/createAccount': (context) => const CreateAccount(),
       },
     );
   }
