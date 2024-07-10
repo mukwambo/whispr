@@ -53,7 +53,7 @@ class SignInPage extends StatelessWidget {
                 ),
                 onPressed: () {
                   // Navigate to the LogIn page when the button is clicked
-                  Navigator.pushNamed(context, '/LoginPage');
+                  Navigator.pushNamed(context, '/loginPage');
                 },
                 child: const Text(
                   'LogIn',

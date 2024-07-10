@@ -40,7 +40,7 @@ class LoginPage extends StatelessWidget {
                       hintText: 'Username',
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   Text(
                     'Password',
                     style: Theme.of(context).textTheme.labelSmall,
@@ -54,6 +54,16 @@ class LoginPage extends StatelessWidget {
                       prefixIcon: Icon(Icons.lock),
                       suffixIcon: Icon((Icons.remove_red_eye)),
                       hintText: 'Password',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Forgot Password',
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                   const SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:whispr/pages/create_account.dart';
 import 'package:whispr/pages/intro_page.dart';
 import 'package:whispr/pages/login_page.dart';
+import 'package:whispr/pages/recovery_email_page.dart';
 import 'package:whispr/pages/signin_page.dart';
 
 void main() {
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
 
           // Medium title theme
           titleMedium: TextStyle(
-            fontSize: 35,
+            fontSize: 36,
             fontWeight: FontWeight.bold,
             color: Color(0xffff4165),
           ),
@@ -103,7 +104,8 @@ class MyApp extends StatelessWidget {
         // Simplified way for handling navigation between screens
         '/signInPage': (context) => const SignInPage(),
         '/createAccount': (context) => const CreateAccount(),
-        '/LoginPage': (context) => const LoginPage(),
+        '/loginPage': (context) => const LoginPage(),
+        '/recoveryEmailPage': (context) => const RecoveryEmailPage()
       },
     );
   }

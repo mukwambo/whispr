@@ -92,7 +92,9 @@ class CreateAccount extends StatelessWidget {
                     height: 50,
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/recoveryEmailPage');
+                    },
                     child: const Text('SignUp'),
                   ),
                   const SizedBox(
