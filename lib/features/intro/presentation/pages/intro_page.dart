@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:whispr/core/routing/route_paths.dart';
+import 'package:whispr/core/theme/app_colors.dart';
+import 'package:whispr/core/theme/app_spacing.dart';
 
 class IntroPage extends StatelessWidget {
   const IntroPage({super.key});
@@ -6,7 +11,7 @@ class IntroPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffff4165),
+      backgroundColor: AppColors.primary,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -18,36 +23,27 @@ class IntroPage extends StatelessWidget {
                   'Whispr',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
+                const SizedBox(height: AppSpacing.lg),
                 const Text(
                   'Unburden anonymously, boost\n your mental health.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xfffffefe),
+                    color: AppColors.onPrimary,
                     fontSize: 18,
                   ),
                 ),
-                const SizedBox(
-                  height: 40,
-                ),
+                const SizedBox(height: AppSpacing.lg),
                 TextButton(
                   style: TextButton.styleFrom(
-                    foregroundColor: const Color(0xffff4165),
-                    backgroundColor: const Color(0xfffffefe),
+                    foregroundColor: AppColors.primary,
+                    backgroundColor: AppColors.onPrimary,
                   ),
-                  onPressed: () {
-                    // Navigate to the signInPage when the button is clicked
-                    Navigator.pushNamed(context, '/signInPage');
-                  },
+                  onPressed: () => context.go(RoutePaths.signIn),
                   child: const Text(
-                    'Lets Get Started',
-                    style: TextStyle(
-                      color: Color(0xffff4165),
-                    ),
+                    "Let's get started",
+                    style: TextStyle(color: AppColors.primary),
                   ),
-                )
+                ),
               ],
             ),
           ),

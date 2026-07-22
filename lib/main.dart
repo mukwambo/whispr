@@ -1,112 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:whispr/pages/create_account.dart';
-import 'package:whispr/pages/intro_page.dart';
-import 'package:whispr/pages/login_page.dart';
-import 'package:whispr/pages/recovery_email_page.dart';
-import 'package:whispr/pages/signin_page.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:whispr/core/routing/app_router.dart';
+import 'package:whispr/core/theme/app_theme.dart';
 
 void main() {
   runApp(
-    const MyApp(),
+    const ProviderScope(
+      child: MyApp(),
+    ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(goRouterProvider);
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Whispr',
-
-      // The app theme
-      theme: ThemeData(
-        useMaterial3: true,
-        // General font
-        fontFamily: 'Roboto',
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xffff4165),
-          primary: const Color(0xffff4165),
-          secondary: const Color(0xfffffefe),
-          brightness: Brightness.light,
-        ),
-
-        //Scaffold theme
-        scaffoldBackgroundColor: const Color(0xfff1f1f1),
-        //AppBar theme
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Color(0xffff4165),
-          ),
-        ),
-        textTheme: const TextTheme(
-          // Small title theme
-          titleSmall: TextStyle(
-            fontSize: 16,
-          ),
-
-          // Medium title theme
-          titleMedium: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
-            color: Color(0xffff4165),
-          ),
-
-          // Large title theme
-          titleLarge: TextStyle(
-            fontSize: 55,
-            fontFamily: 'Pacifico',
-            color: Color(0xfffffefe),
-          ),
-          labelSmall: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.bold,
-            color: Color(0xffff4165),
-          ),
-        ),
-
-        //Button theme
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            textStyle: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-            minimumSize: const Size(double.infinity, 50),
-            backgroundColor: const Color(0xffff4165), // Button background color
-            foregroundColor: const Color(0xfffffefe), // Button foreground color
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.0),
-            ),
-          ),
-        ),
-        // Text field theme
-        inputDecorationTheme: InputDecorationTheme(
-          hintStyle: Theme.of(context).textTheme.titleSmall,
-          prefixIconColor: const Color(0xffff4165),
-          suffixIconColor: const Color(0xffff4165),
-          filled: true,
-          fillColor: const Color(0xfffffefe),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(
-              Radius.circular(12.0),
-            ),
-          ),
-        ),
-      ),
-      home: const IntroPage(),
-      routes: {
-        // Simplified way for handling navigation between screens
-        '/signInPage': (context) => const SignInPage(),
-        '/createAccount': (context) => const CreateAccount(),
-        '/loginPage': (context) => const LoginPage(),
-        '/recoveryEmailPage': (context) => const RecoveryEmailPage()
-      },
+      theme: appTheme,
+      routerConfig: router,
     );
   }
 }
