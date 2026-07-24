@@ -36,42 +36,46 @@ class AppTextStyles {
 
   /// A page's title (e.g. "Create your account"). Calm, not shouty: medium
   /// weight rather than bold, ink rather than the accent color.
+  ///
+  /// No color baked in - `ink`/`inkMuted`/`inkFaint` vary between light and
+  /// dark mode, so callers apply color from `context.appColors` via
+  /// `.copyWith(color: ...)` instead of it being a compile-time constant.
   static const pageTitle = TextStyle(
     fontSize: 26,
     fontWeight: FontWeight.w600,
-    color: AppColors.ink,
     height: 1.25,
     letterSpacing: -0.3,
   );
 
-  /// Supporting copy directly under a page title.
+  /// Supporting copy directly under a page title. Color applied by callers
+  /// via `context.appColors.inkMuted` (see [pageTitle]).
   static const subtitle = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w400,
-    color: AppColors.inkMuted,
     height: 1.5,
   );
 
-  /// Small tracked caption - divider labels, section eyebrows.
+  /// Small tracked caption - divider labels, section eyebrows. Color
+  /// applied by callers via `context.appColors.inkFaint` (see [pageTitle]).
   static const caption = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w600,
-    color: AppColors.inkFaint,
     letterSpacing: 0.8,
   );
 
-  /// A form field's label at rest, before it floats on focus.
+  /// A form field's label at rest, before it floats on focus. Colored
+  /// directly in `app_theme.dart` (per-brightness `inputDecorationTheme`),
+  /// not by page call sites.
   static const fieldLabel = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: AppColors.inkMuted,
   );
 
-  /// A form field's label once floated (focused or filled).
+  /// A form field's label once floated (focused or filled). Colored
+  /// directly in `app_theme.dart`, same as [fieldLabel].
   static const fieldLabelFloating = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,
-    color: AppColors.inkMuted,
     letterSpacing: 0.1,
   );
 
@@ -90,9 +94,10 @@ class AppTextStyles {
   );
 
   /// Smallest print - footer legal links, dismissive actions like "Skip".
+  /// Color applied by callers via `context.appColors.inkFaint` (see
+  /// [pageTitle]).
   static const smallPrint = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w400,
-    color: AppColors.inkFaint,
   );
 }

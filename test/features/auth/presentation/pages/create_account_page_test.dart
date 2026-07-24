@@ -8,6 +8,7 @@ import 'package:whispr/core/error/failure.dart';
 import 'package:whispr/features/auth/domain/entities/auth_result.dart';
 import 'package:whispr/features/auth/domain/entities/user.dart';
 import 'package:whispr/features/auth/domain/repositories/auth_repository.dart';
+import 'package:whispr/core/theme/app_theme.dart';
 import 'package:whispr/features/auth/presentation/pages/create_account_page.dart';
 import 'package:whispr/features/auth/presentation/providers/auth_providers.dart';
 
@@ -34,7 +35,7 @@ void main() {
     );
     return ProviderScope(
       overrides: [authRepositoryProvider.overrideWithValue(repository)],
-      child: MaterialApp.router(routerConfig: router),
+      child: MaterialApp.router(theme: lightTheme, routerConfig: router),
     );
   }
 

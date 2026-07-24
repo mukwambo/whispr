@@ -4,12 +4,14 @@ import 'package:go_router/go_router.dart';
 
 import 'package:whispr/core/error/failure.dart';
 import 'package:whispr/core/routing/route_paths.dart';
+import 'package:whispr/core/theme/app_colors.dart';
 import 'package:whispr/core/theme/app_spacing.dart';
 import 'package:whispr/core/theme/app_text_styles.dart';
 import 'package:whispr/core/utils/validators.dart';
 import 'package:whispr/core/widgets/app_text_field.dart';
 import 'package:whispr/core/widgets/centered_form_body.dart';
 import 'package:whispr/core/widgets/primary_button.dart';
+import 'package:whispr/core/widgets/quiet_back_app_bar.dart';
 
 import '../providers/sign_up_controller.dart';
 
@@ -59,14 +61,19 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
     });
 
     final isLoading = ref.watch(signUpControllerProvider).isLoading;
+    final colors = context.appColors;
 
     return Scaffold(
+      appBar: const QuietBackAppBar(),
       body: CenteredFormBody(
         formKey: _formKey,
         children: [
-          const Text('Create your account', style: AppTextStyles.pageTitle),
+          Text('Create your account', style: AppTextStyles.pageTitle.copyWith(color: colors.ink)),
           const SizedBox(height: AppSpacing.xs),
-          const Text('Your identity stays private. Always.', style: AppTextStyles.subtitle),
+          Text(
+            'Your identity stays private. Always.',
+            style: AppTextStyles.subtitle.copyWith(color: colors.inkMuted),
+          ),
           const SizedBox(height: AppSpacing.lg),
           AppTextField(
             controller: _usernameController,
@@ -101,12 +108,12 @@ class _CreateAccountPageState extends ConsumerState<CreateAccountPage> {
             onPressed: _submit,
           ),
           const SizedBox(height: AppSpacing.xl),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Terms of Service', style: AppTextStyles.smallPrint),
-              Text('  ·  ', style: AppTextStyles.smallPrint),
-              Text('Privacy policy', style: AppTextStyles.smallPrint),
+              Text('Terms of Service', style: AppTextStyles.smallPrint.copyWith(color: colors.inkFaint)),
+              Text('  ·  ', style: AppTextStyles.smallPrint.copyWith(color: colors.inkFaint)),
+              Text('Privacy policy', style: AppTextStyles.smallPrint.copyWith(color: colors.inkFaint)),
             ],
           ),
         ],

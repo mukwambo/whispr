@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import 'package:whispr/core/error/failure.dart';
 import 'package:whispr/core/routing/route_paths.dart';
+import 'package:whispr/core/theme/app_colors.dart';
 import 'package:whispr/core/theme/app_spacing.dart';
 import 'package:whispr/core/theme/app_text_styles.dart';
 import 'package:whispr/core/utils/validators.dart';
@@ -53,16 +54,17 @@ class _RecoveryEmailPageState extends ConsumerState<RecoveryEmailPage> {
     });
 
     final isLoading = ref.watch(recoveryEmailControllerProvider).isLoading;
+    final colors = context.appColors;
 
     return Scaffold(
       body: CenteredFormBody(
         formKey: _formKey,
         children: [
-          const Text('Add a recovery email', style: AppTextStyles.pageTitle),
+          Text('Add a recovery email', style: AppTextStyles.pageTitle.copyWith(color: colors.ink)),
           const SizedBox(height: AppSpacing.xs),
-          const Text(
+          Text(
             "We'll only ever use this to help you back in - nothing else.",
-            style: AppTextStyles.subtitle,
+            style: AppTextStyles.subtitle.copyWith(color: colors.inkMuted),
           ),
           const SizedBox(height: AppSpacing.lg),
           AppTextField(
@@ -81,7 +83,7 @@ class _RecoveryEmailPageState extends ConsumerState<RecoveryEmailPage> {
           Center(
             child: TextLink(
               text: 'Skip for now',
-              style: AppTextStyles.smallPrint,
+              style: AppTextStyles.smallPrint.copyWith(color: colors.inkFaint),
               onPressed: isLoading
                   ? null
                   : () => ref.read(recoveryEmailControllerProvider.notifier).skip(),

@@ -7,6 +7,8 @@ import 'package:whispr/features/auth/presentation/pages/login_page.dart';
 import 'package:whispr/features/auth/presentation/pages/recovery_email_page.dart';
 import 'package:whispr/features/auth/presentation/pages/signin_page.dart';
 import 'package:whispr/features/auth/presentation/providers/auth_providers.dart';
+import 'package:whispr/features/chat/presentation/pages/chat_conversation_page.dart';
+import 'package:whispr/features/chat/presentation/pages/chat_matching_page.dart';
 import 'package:whispr/features/home/presentation/pages/home_page.dart';
 import 'package:whispr/features/intro/presentation/pages/intro_page.dart';
 import 'route_paths.dart';
@@ -76,6 +78,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: RoutePaths.home,
         builder: (context, state) => const HomePage(),
+      ),
+      GoRoute(
+        path: RoutePaths.chatMatching,
+        builder: (context, state) => const ChatMatchingPage(),
+      ),
+      GoRoute(
+        path: RoutePaths.chat,
+        builder: (context, state) => const ChatConversationPage(),
       ),
     ],
   );

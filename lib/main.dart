@@ -22,7 +22,10 @@ class MyApp extends ConsumerWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Whispr',
-      theme: appTheme,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      // themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       routerConfig: router,
     );
   }

@@ -9,4 +9,6 @@ class RoutePaths {
   static const login = '/login';
   static const recoveryEmail = '/recovery-email';
   static const home = '/home';
+  static const chatMatching = '/chat/matching';
+  static const chat = '/chat';
 }

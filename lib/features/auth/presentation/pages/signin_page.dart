@@ -13,6 +13,8 @@ class SignInPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colors = context.appColors;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -29,24 +31,27 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.lg),
-              const Text(
+              Text(
                 'Continue to your account',
-                style: AppTextStyles.subtitle,
+                style: AppTextStyles.subtitle.copyWith(color: colors.inkMuted),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: AppSpacing.xl),
               PrimaryButton(
                 label: 'Create an account',
-                onPressed: () => context.go(RoutePaths.createAccount),
+                onPressed: () => context.push(RoutePaths.createAccount),
               ),
               const SizedBox(height: AppSpacing.md),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('Already have an account? ', style: AppTextStyles.subtitle),
+                  Text(
+                    'Already have an account? ',
+                    style: AppTextStyles.subtitle.copyWith(color: colors.inkMuted),
+                  ),
                   TextLink(
                     text: 'Log in',
-                    onPressed: () => context.go(RoutePaths.login),
+                    onPressed: () => context.push(RoutePaths.login),
                   ),
                 ],
               ),

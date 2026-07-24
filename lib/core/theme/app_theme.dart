@@ -3,27 +3,35 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'app_text_styles.dart';
 
-/// Assembles the app's ThemeData from the token files in this directory.
-/// `colorScheme`/`textTheme.titleLarge` stay exactly as they were - that's
-/// what renders the "Whispr" wordmark - everything else here is the calm,
-/// restrained-accent styling described in `app_colors.dart`/`app_text_styles.dart`.
-ThemeData get appTheme {
+/// The light theme. `colorScheme`/`textTheme.titleLarge` stay exactly as
+/// they were - that's what renders the "Whispr" wordmark - everything else
+/// is the calm, restrained-accent styling described in
+/// `app_colors.dart`/`app_text_styles.dart`.
+final lightTheme = _buildTheme(AppColorTokens.light, Brightness.light);
+
+/// The dark theme - same shapes and spacing as [lightTheme], only the color
+/// tokens differ (see [AppColorTokens.dark]).
+final darkTheme = _buildTheme(AppColorTokens.dark, Brightness.dark);
+
+ThemeData _buildTheme(AppColorTokens tokens, Brightness brightness) {
   return ThemeData(
     useMaterial3: true,
+    brightness: brightness,
     fontFamily: 'Roboto',
+    extensions: [tokens],
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      primary: AppColors.primary,
-      secondary: AppColors.onPrimary,
-      brightness: Brightness.light,
+      seedColor: tokens.primary,
+      primary: tokens.primary,
+      secondary: tokens.onPrimary,
+      brightness: brightness,
     ),
-    scaffoldBackgroundColor: AppColors.scaffoldBackground,
-    appBarTheme: const AppBarTheme(
+    scaffoldBackgroundColor: tokens.scaffoldBackground,
+    appBarTheme: AppBarTheme(
       centerTitle: true,
       titleTextStyle: TextStyle(
         fontSize: 25,
         fontWeight: FontWeight.bold,
-        color: AppColors.primary,
+        color: tokens.primary,
       ),
     ),
     textTheme: const TextTheme(
@@ -36,8 +44,8 @@ ThemeData get appTheme {
       style: TextButton.styleFrom(
         textStyle: AppTextStyles.button,
         minimumSize: const Size(double.infinity, 50),
-        backgroundColor: AppColors.primary,
-        foregroundColor: AppColors.onPrimary,
+        backgroundColor: tokens.primary,
+        foregroundColor: tokens.onPrimary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14.0),
         ),
@@ -45,36 +53,36 @@ ThemeData get appTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: AppColors.surface,
-      prefixIconColor: AppColors.inkFaint,
-      suffixIconColor: AppColors.inkFaint,
-      labelStyle: AppTextStyles.fieldLabel,
-      floatingLabelStyle: AppTextStyles.fieldLabelFloating,
+      fillColor: tokens.surface,
+      prefixIconColor: tokens.inkFaint,
+      suffixIconColor: tokens.inkFaint,
+      labelStyle: AppTextStyles.fieldLabel.copyWith(color: tokens.inkMuted),
+      floatingLabelStyle: AppTextStyles.fieldLabelFloating.copyWith(color: tokens.inkMuted),
       floatingLabelBehavior: FloatingLabelBehavior.auto,
-      errorStyle: const TextStyle(
+      errorStyle: TextStyle(
         fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: AppColors.error,
+        color: tokens.error,
       ),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       border: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.divider, width: 1),
+        borderSide: BorderSide(color: tokens.divider, width: 1),
         borderRadius: BorderRadius.circular(14.0),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.divider, width: 1),
+        borderSide: BorderSide(color: tokens.divider, width: 1),
         borderRadius: BorderRadius.circular(14.0),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.primary, width: 1.4),
+        borderSide: BorderSide(color: tokens.primary, width: 1.4),
         borderRadius: BorderRadius.circular(14.0),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.error, width: 1),
+        borderSide: BorderSide(color: tokens.error, width: 1),
         borderRadius: BorderRadius.circular(14.0),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.error, width: 1.4),
+        borderSide: BorderSide(color: tokens.error, width: 1.4),
         borderRadius: BorderRadius.circular(14.0),
       ),
     ),

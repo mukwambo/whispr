@@ -37,6 +37,14 @@ class NetworkFailure extends Failure {
   const NetworkFailure() : super('Network error, please try again');
 }
 
+class ChatSessionAlreadyActiveFailure extends Failure {
+  const ChatSessionAlreadyActiveFailure() : super('You already have a chat in progress');
+}
+
+class EmptyMessageFailure extends Failure {
+  const EmptyMessageFailure() : super('Message cannot be empty');
+}
+
 class UnknownFailure extends Failure {
   const UnknownFailure([super.message = 'Something went wrong']);
 }
