@@ -1,6 +1,6 @@
 # Whispr
 
-An anonymous mental-health venting app: *"Unburden anonymously, boost your mental health."*
+An anonymous mental-health venting app: *"Unburden anonymously."*
 
 ## Architecture
 
